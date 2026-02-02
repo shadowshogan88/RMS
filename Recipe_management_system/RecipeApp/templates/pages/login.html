@@ -1,0 +1,38 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section class="content center full-width">
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="modal container">
+            <h3>Login</h3>
+
+            <div class="f-row">
+                <input type="text" name="username" placeholder="Your username" required>
+            </div>
+
+            <div class="f-row">
+                <input type="password" name="password" placeholder="Your password" required>
+            </div>
+
+            <div class="f-row">
+                <input type="checkbox" name="remember_me" id="remember">
+                <label for="remember">Remember me next time</label>
+            </div>
+
+            <div class="f-row bwrap">
+                <input type="submit" value="Login">
+            </div>
+
+            <p><a href="#">Forgotten password?</a></p>
+            <p>Don’t have an account yet?
+                <a href="{% url 'sign_up' %}">Sign up</a>
+            </p>
+        </div>
+    </form>
+</section>
+{% endblock %}
