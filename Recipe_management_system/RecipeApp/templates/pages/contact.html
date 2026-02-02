@@ -72,23 +72,24 @@
 				<!--content-->
 				<section class="content center full-width">
 					<div class="modal container">
-						<form method="post" action="https://www.themeenergy.com/themes/html/social-chef/contact_form_message.php" name="contactform" id="contactform">
+						<form method="post" name="contactform">
+							{% csrf_token %}
 							<h3>Contact us</h3>
 							<div id="message" class="alert alert-danger"></div>
 							<div class="f-row">
-								<input type="text" placeholder="Your name" id="name" />
+								<input type="text" placeholder="Your name" id="name" name="name" />
 							</div>
 							<div class="f-row">
-								<input type="email" placeholder="Your email" id="email" />
+								<input type="email" placeholder="Your email" id="email" name="email" />
 							</div>
 							<div class="f-row">
-								<input type="number" placeholder="Your phone number" id="phone" />
+								<input type="number" placeholder="Your phone number" id="phone" name="phone" />
 							</div>
 							<div class="f-row">
-								<textarea placeholder="Your message" id="comments"></textarea>
+								<textarea placeholder="Your message" id="comments" name="message"></textarea>
 							</div>
 							<div class="f-row bwrap">
-								<input type="submit" value="Send message" />
+								<input type="submit"/>
 							</div>
 						</form>
 					</div>
@@ -155,7 +156,7 @@
 	<script src="{% static 'js/jquery.slicknav.min.js' %} "></script>
 	<script src="{% static 'js/scripts.js' %} "></script>
 
-	    {% if messages %}
+	{% if messages %}
 	<script>
     document.addEventListener("DOMContentLoaded", function () {
         {% for message in messages %}
